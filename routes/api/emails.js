@@ -13,7 +13,7 @@ const path = require('path');
 
 const mailgunAuth = {
     auth: {
-        api_key: 'key-892b6a66c2f9dba1421caed942d29a23',
+        api_key: '',
         domain: 'mg.ferociousmediaweb.com',
     },
 };

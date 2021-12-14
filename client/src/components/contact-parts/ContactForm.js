@@ -93,7 +93,7 @@ const ContactForm = ({ addEmail }) => {
                         )}
                         <ReCAPTCHA
                             ref={recaptchaRef}
-                            sitekey='6Lcj-DEbAAAAAM_4ZMff5mWSPA4xn_iFsO0T5oM8'
+                            sitekey=''
                             onChange={(e) => onChange(e)}
                         />
                     </Grid>

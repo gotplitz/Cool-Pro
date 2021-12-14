@@ -24,7 +24,7 @@ const ContactMap = () => {
         <section style={{ height: '545px', marginTop: '-70px' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{
-                    key: 'AIzaSyAch_9Qk6XtqtcrV0eVFVwZ9slv6POKuss',
+                    key: '',
                 }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}

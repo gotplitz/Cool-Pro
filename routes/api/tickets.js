@@ -12,7 +12,7 @@ const path = require('path');
 
 const mailgunAuth = {
     auth: {
-        api_key: 'key-892b6a66c2f9dba1421caed942d29a23',
+        api_key: '',
         domain: 'mg.ferociousmediaweb.com',
     },
 };
@@ -187,7 +187,7 @@ router.post(
                 secure: true,
                 auth: {
                     user: 'hello@plitz.website',
-                    pass: 'Megan2302$',
+                    pass: '',
                 },
                 tls: {
                     rejectUnauthorized: false,
@@ -196,7 +196,7 @@ router.post(
 
             // setup email data with unicode symbols
             let info = transporter.sendMail({
-                from: '"Cool Pro Mechanical" <marketing@licoolpro.com>',
+                from: '',
                 to: `${ticket.email}`,
                 bcc: 'marketing@licoolpro.com',
                 subject: `Discussion to Ticket ${ticket._id}`,

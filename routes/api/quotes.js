@@ -83,12 +83,12 @@ router.post(
             res.json(quote);
 
             let transporter = nodemailer.createTransport({
-                host: 'mail.plitz.website',
+                host: '',
                 port: 465,
                 secure: true,
                 auth: {
                     user: 'hello@plitz.website',
-                    pass: 'Megan2302$',
+                    pass: '',
                 },
                 tls: {
                     rejectUnauthorized: false,
@@ -97,7 +97,7 @@ router.post(
 
             // setup email data with unicode symbols
             let info = transporter.sendMail({
-                from: '"Cool Pro Mechanical" <marketing@licoolpro.com>',
+                from: '',
                 to: `${quote.email}`,
                 bcc: 'marketing@licoolpro.com',
                 subject: 'Quote request at CoolProLI.com',
@@ -147,12 +147,12 @@ router.post(
             res.json(quote.responses);
 
             let transporter = nodemailer.createTransport({
-                host: 'mail.plitz.website',
+                host: '',
                 port: 465,
                 secure: true,
                 auth: {
-                    user: 'hello@plitz.website',
-                    pass: 'Megan2302$',
+                    user: '',
+                    pass: '',
                 },
                 tls: {
                     rejectUnauthorized: false,
@@ -161,7 +161,7 @@ router.post(
 
             // setup email data with unicode symbols
             let info = transporter.sendMail({
-                from: '"Cool Pro Mechanical" <marketing@licoolpro.com>',
+                from: '',
                 to: `${quote.email}`,
                 bcc: 'marketing@licoolpro.com',
                 subject: `Response to Quote ${quote._id}`,
