@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://coolpro:Cool777@roarpower.by4wx.mongodb.net/Cool-Prop?retryWrites=true&w=majority",
+  "jwtSecret": "plitzsecret"
+}

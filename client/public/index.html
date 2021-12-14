@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/icons/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#1c3e9e" />
+
+        <!-- Font Awesome -->
+        <script
+            src="https://kit.fontawesome.com/2118da6da2.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="%PUBLIC_URL%/icons/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="%PUBLIC_URL%/icons/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="%PUBLIC_URL%/icons/favicon-16x16.png"
+        />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="Cool Pro" />
+
+        <link rel="manifest" href="%PUBLIC_URL%/icons/manifest.json" />
+        <link rel="stylesheet" href="%PUBLIC_URL%/App.css" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="%PUBLIC_URL%/Plitz.css" />
+
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+            }
+            .splash {
+                background-color: #1c3e9e;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 90%;
+                max-width: 512px;
+                text-align: center;
+                height: auto;
+            }
+
+            .logo img {
+                width: 100%;
+                height: auto;
+            }
+
+            .page-info {
+                padding: 10px;
+                font-size: 12px;
+                text-align: center;
+                color: #fff;
+                vertical-align: middle;
+            }
+
+            #snackbar {
+                visibility: hidden;
+                cursor: pointer;
+                width: 90%;
+                max-width: 300px;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                border-radius: 2px;
+                padding: 16px;
+                position: absolute;
+                z-index: 1;
+                left: 50%;
+                transform: translate(-50%);
+                bottom: 30px;
+                font-size: 12px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            #snaback a {
+                color: #fff !important;
+                text-decoration: none;
+            }
+
+            #snackbar.show {
+                visibility: visible;
+                -webkit-animation: fadein 0.5s;
+                animation: fadein 0.5s;
+                cursor: pointer;
+            }
+
+            #reload {
+                color: #fff !important;
+                text-decoration: none;
+            }
+
+            @-webkit-keyframes fadein {
+                from {
+                    bottom: 0;
+                    opacity: 0;
+                }
+                to {
+                    bottom: 30px;
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadein {
+                from {
+                    bottom: 0;
+                    opacity: 0;
+                }
+                to {
+                    bottom: 30px;
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">
+            <div class="splash">
+                <div class="logo">
+                    <img
+                        src="splash/cool-pro-mechanical-logo.png"
+                        alt="Cool Pro logo"
+                        width="512"
+                        height="512"
+                    />
+                </div>
+                <p class="page-info">LOADING SITE...</p>
+            </div>
+        </div>
+        <div id="snackbar">
+            A new version is available.
+            <a id="reload">Click to update.</a>
+        </div>
+
+        <!-- Core-->
+        <script src="%PUBLIC_URL%/scripts/core.jquery.js"></script>
+
+        <!-- Vendor Plugins-->
+        <script src="%PUBLIC_URL%/scripts/plugin.imagesloaded.pkgd.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.in-viewport.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.animate.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.isotope.pkgd.min.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.ScrollToPlugin.min.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.SplitText.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.TweenMax.min.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.touchSwipe.min.js"></script>
+        <script src="%PUBLIC_URL%/scripts/plugin.typed.min.js"></script>
+        <!-- Plugins-->
+        <script src="%PUBLIC_URL%/plugins/nevo-slider/nevo-slider.js"></script>
+        <script src="%PUBLIC_URL%/plugins/nevo-lightbox/nevo-lightbox.js"></script>
+        <script src="%PUBLIC_URL%/scripts/main.functions.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            let newWorker;
+
+            function showUpdateBar() {
+                let snackbar = document.getElementById('snackbar');
+                snackbar.className = 'show';
+            }
+
+            // The click event on the pop up notification
+            document
+                .getElementById('reload')
+                .addEventListener('click', function () {
+                    newWorker.postMessage({ action: 'skipWaiting' });
+                });
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/worker.js').then((reg) => {
+                    reg.addEventListener('updatefound', () => {
+                        // A wild service worker has appeared in reg.installing!
+                        newWorker = reg.installing;
+
+                        newWorker.addEventListener('statechange', () => {
+                            // Has network.state changed?
+                            switch (newWorker.state) {
+                                case 'installed':
+                                    if (navigator.serviceWorker.controller) {
+                                        // new update available
+                                        showUpdateBar();
+                                    }
+                                    // No update available
+                                    break;
+                            }
+                        });
+                    });
+                });
+
+                let refreshing;
+                navigator.serviceWorker.addEventListener(
+                    'controllerchange',
+                    function () {
+                        if (refreshing) return;
+                        window.location.reload();
+                        refreshing = true;
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>
